@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Clinic Assistant{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f7fa; margin: 0; color: #222; }
+    nav { background: #0b6e99; padding: 14px 24px; }
+    nav a { color: white; text-decoration: none; margin-right: 20px; font-weight: bold; }
+    .container { max-width: 720px; margin: 30px auto; background: white; padding: 28px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    input, textarea { width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #bbb; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
+    button, .btn { background: #0b6e99; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #eaf3f8; }
+    .emergency { background: #fdecea; border-left: 5px solid #d32f2f; padding: 14px; border-radius: 6px; margin-top: 20px; }
+    .note { color: #666; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/triage">Symptom Checker</a>
+    <a href="/book">Book Appointment</a>
+    <a href="/appointments">Appointments</a>
+  </nav>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

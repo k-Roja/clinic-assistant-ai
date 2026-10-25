@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Appointments{% endblock %}
+{% block content %}
+<h1>Booked Appointments</h1>
+<table>
+  <tr><th>ID</th><th>Name</th><th>Phone</th><th>Date</th></tr>
+  {% for a in appointments %}
+  <tr>
+    <td>{{ a["id"] }}</td>
+    <td>{{ a["name"] }}</td>
+    <td>{{ a["phone"] }}</td>
+    <td>{{ a["date"] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<br>
+<a class="btn" href="/book">Book another appointment</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Symptom Checker{% endblock %}
+{% block content %}
+<h1>Which doctor should I see?</h1>
+<form method="POST">
+  <label>Describe your symptoms</label>
+  <textarea name="symptoms" rows="4" required>{{ symptoms }}</textarea><br><br>
+  <button type="submit">Get suggestion</button>
+</form>
+
+{% if result %}
+  {% if result.error %}
+    <p>{{ result.error }}</p>
+  {% else %}
+    {% if result.urgency == "Emergency" %}
+      <div class="emergency">
+        <h2>Emergency: get help now</h2>
+        <p>Call 112 or go to the nearest hospital immediately. Do not wait for an appointment.</p>
+      </div>
+    {% endif %}
+    <h2>Suggestion</h2>
+    <p><b>Specialist:</b> {{ result.specialist }}</p>
+    <p><b>Urgency:</b> {{ result.urgency }}</p>
+    <p><b>Why:</b> {{ result.reason }}</p>
+    <p><b>Go to a hospital immediately if:</b></p>
+    <ul>
+      {% for w in result.warning_signs %}<li>{{ w }}</li>{% endfor %}
+    </ul>
+    <p class="note">{{ result.disclaimer }}</p>
+    {% if result.urgency != "Emergency" %}
+      <a class="btn" href="/book">Book an appointment</a>
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% endblock %}
